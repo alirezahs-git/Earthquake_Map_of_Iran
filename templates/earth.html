@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MAP</title>
+    <meta charset="utf-8" />
+    <link
+        rel="stylesheet"
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-image: url({{ url_for('static', filename='back.jpg') }})
+            }
+
+    </style>
+</head>
+<style>
+.content {
+    height: 200px;
+    width: 400px;
+    background: black;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  border-radius: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+@font-face {
+font-family: Vazir;
+src: url({{ url_for('static', filename='Vazir.eot') }});
+src: url('({{ url_for('static', filename='Vazir.eot') }})?#iefix') format('embedded-opentype'),
+url({{ url_for('static', filename='Vazir.woff') }}) format('woff'),
+url({{ url_for('static', filename='Vazir.ttf') }}) format('truetype');
+font-weight: 900;
+font-style: normal;
+}
+@font-face {
+    font-family: Vazirblack;
+    src: url({{ url_for('static', filename='Vazir-Black.eot') }});
+    src: url('({{ url_for('static', filename='Vazir-Black.eot') }})?#iefix') format('embedded-opentype'),
+         url({{ url_for('static', filename='Vazir-Black.woff2') }}) format('woff2'),
+         url({{ url_for('static', filename='Vazir-Black.woff') }}) format('woff'),
+         url({{ url_for('static', filename='Vazir-Black.ttf') }}) format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+.fn {
+  font-family: Vazir;
+  float: right;
+}
+
+.en{
+  font-family: Vazir;
+  float: left;
+  direction: ltr;
+  text-align: left;
+
+}
+.fb {
+    font-family: Vazirblack
+}
+</style>
+<body>
+    <!-- <div class="bg"></div> -->
+    <div class="bg-text">
+    <div class="fb"><h1>نقشـــه زلــزلـــــه ایــــران</h1>
+    <h3>Earthquake 			&nbsp; &nbsp; 	  Map 		&nbsp; 		&nbsp;  of&nbsp; &nbsp;Iran</h3></div>
+    <div class="fn"><p style="  direction: rtl; text-align: right;">❓راهنما:</br>
+    - نقشه مقابل زلزله های یک هفته اخیر رخ داده در ایران را نشان می دهد. </br>
+    - اگر بر روی نقشه راست کلیک کنید زلزله های یک ماه اخر تا شعاع 1000 کیلومتری نقطه ای</br>
+     که راست کلیک کردید را نشان خواهد داد.</br>
+    </br>
+     - شما نقطه زیر را انتخاب کردید:</br>
+    {% if center != [33.1217, 47.6153]  %}
+        {{center | safe}}</br>
+    {% else %}
+        (شما هنوز نقطه ای انتخاب نکردید!)</br>
+    {% endif %}
+
+</p>
+<p style="  direction: ltr; text-align: left;"></br>
+    ❓Guide:</br>
+    - The following map shows the earthquakes in the recent week in Iran. </br>
+    - If you click right on the map,it will show </br>
+    the earthquakes in the recent month around its 1000 kilometers radius. </br>
+    - You selected the following point:</br>
+    {% if center != [33.1217, 47.6153]  %}
+        {{center | safe}}</br>
+    {% else %}
+    (You have not yet picked a point!)</br>
+    {% endif %}
+</p></div>
+    <div align="left" id="map" style="width: 600px; height: 400px;"></div>
+    <div class="fb"></br> Developed with <font color="red">❤</font> by linux geeks group! 	&nbsp; | &nbsp; GPL v3.0 &nbsp;| &nbsp; <img src="{{ url_for('static', filename='github.png') }}" alt="Github icon" style="width:20px;height:20px;">    <a href="https://github.com" style="text-decoration : none; color : #ffffff;">Github</a>   </div>
+    <script
+        src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+    </script>
+
+    <script>
+	var planes = {{ planes| safe }} ;
+    var zoom = {{ zoom }} ;
+    var center = {{ center }} ;
+        var map = L.map('map').setView(center, zoom);
+        mapLink =
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+            }).addTo(map);
+
+		for (var i = 0; i < planes.length; i++) {
+			marker = new L.marker([planes[i][1],planes[i][2]])
+				.bindPopup(planes[i][0])
+				.addTo(map);
+    }
+    map.on("contextmenu", function (event) {
+  var cordinate=event.latlng.toString();
+      cordinate=cordinate.replace('LatLng(','');
+      cordinate=cordinate.replace(')','');
+      document.getElementById('cordinate').value=cordinate;
+      document.getElementById('cordinate_submit').submit()
+});
+
+    </script>
+
+    <form method="POST" action="\cordinate_show" id='cordinate_submit'>
+    <input type="text" id='cordinate' name='cordinate' hidden>
+
+    </form>
+  </div>
+  </body>
+</html>
