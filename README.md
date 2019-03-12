@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/github/license/alirezahs-git/Earthquake_Map_of_Iran.svg" alt="License" />
   </a>
 </p>
-## Demo
+<h1>Demo</h1>
 <p align="center" >
   <img src="https://user-images.githubusercontent.com/44527296/54236072-f6e8be00-4527-11e9-9f77-6613895d92ac.JPG" alt="Demo" title="Demo">
 </p>
