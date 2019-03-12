@@ -17,7 +17,8 @@
     <img src="https://img.shields.io/github/license/alirezahs-git/Earthquake_Map_of_Iran.svg" alt="License" />
   </a>
 </p>
-
+# Demo
+![](Demo.jpg)
 
 ## Key Features
 frameworks used:</br>
