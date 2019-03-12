@@ -18,7 +18,7 @@
   </a>
 </p>
 ## Demo  
-[[https://github.com/alirezahs-git/Earthquake_Map_of_Iran/blob/master/Demo.JPG|alt=octocat]]
+![alt text](https://raw.githubusercontent.com/alirezahs-git/Earthquake_Map_of_Iran/master/Demo.jpg)
   
 
 ## Key Features
