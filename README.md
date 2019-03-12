@@ -19,7 +19,9 @@
 </p>
 ## Demo
 ![Demo](https://user-images.githubusercontent.com/44527296/54236072-f6e8be00-4527-11e9-9f77-6613895d92ac.JPG
-  
+<p align="center" >
+  <img src="https://user-images.githubusercontent.com/44527296/54236072-f6e8be00-4527-11e9-9f77-6613895d92ac.JPG" alt="Demo" title="Demo">
+</p>
 
 ## Key Features
 frameworks used:</br>
