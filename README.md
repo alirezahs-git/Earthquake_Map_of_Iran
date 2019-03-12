@@ -17,8 +17,8 @@
     <img src="https://img.shields.io/github/license/alirezahs-git/Earthquake_Map_of_Iran.svg" alt="License" />
   </a>
 </p>
-## Demo  
-![alt text](https://raw.githubusercontent.com/alirezahs-git/Earthquake_Map_of_Iran/master/Demo.jpg)
+## Demo
+![Demo](https://user-images.githubusercontent.com/44527296/54236072-f6e8be00-4527-11e9-9f77-6613895d92ac.JPG
   
 
 ## Key Features
