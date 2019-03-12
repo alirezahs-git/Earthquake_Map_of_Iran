@@ -21,11 +21,11 @@
 
 ## Key Features
 frameworks used:</br>
-Flask</br>
-Leaflet</br>
+&ensp;Flask</br>
+&ensp;Leaflet</br>
 api's used:</br>
-<a href="https://earthquake.usgs.gov/fdsnws/event/1/">usgs.gov site api</a></br>
-<a href="http://openstreetmap.org">openstreetmap api</a></br>
+&ensp;<a href="https://earthquake.usgs.gov/fdsnws/event/1/">usgs.gov site api</a></br>
+&ensp;<a href="http://openstreetmap.org">openstreetmap api</a></br>
 
 ## Setup
 Install requirements with pip:
